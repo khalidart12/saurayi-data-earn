@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101a35">
+<title>SAURAYI DATA &amp; EARN</title>
+<style>
+:root{--navy:#101a35;--navy2:#18284d;--gold:#f5c451;--bg:#f3f5fa;--ink:#17213a;--muted:#69738a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;padding:25px 18px 30px;border-radius:0 0 25px 25px}
+.top{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:23px}
+h1{font-size:18px;margin:0}header p{margin:5px 0 0;color:#d9e0f2;font-size:13px}
+main{max-width:680px;margin:-12px auto 35px;padding:0 15px}
+.balance{background:white;border-radius:18px;padding:18px;box-shadow:0 8px 25px #14234712}
+.balance small{color:var(--muted)}.amount{font-size:30px;font-weight:800;margin:7px 0 15px}
+.actions{display:flex;gap:10px}.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:700;cursor:pointer;background:var(--gold);color:var(--navy)}.btn.secondary{background:#edf0f7;color:var(--navy)}
+.section-title{font-size:17px;margin:24px 2px 12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.tile{background:white;border:1px solid #e7eaf1;border-radius:15px;padding:17px 13px;text-align:left;cursor:pointer;min-height:96px}
+.tile .emoji{font-size:23px}.tile strong{display:block;margin-top:8px;font-size:14px}.tile span{font-size:12px;color:var(--muted)}
+.panel{display:none;background:white;border-radius:16px;padding:18px;margin-top:15px}.panel.active{display:block}
+.panel h2{font-size:18px;margin:0 0 8px}.panel p{color:var(--muted);font-size:14px;line-height:1.5}
+.notice{background:#fff8e5;border:1px solid #f3dfa8;border-radius:12px;padding:12px;font-size:12px;line-height:1.5;color:#6e5416;margin-top:20px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+@media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="logo">S</div><div><h1>SAURAYI DATA &amp; EARN</h1><p>Your simple data and earning dashboard</p></div></div></header>
+<main>
+<section class="balance"><small>Wallet Balance (Demo)</small><div class="amount">₦0.00</div><div class="actions"><button class="btn" onclick="showPanel('fund')">Fund Wallet</button><button class="btn secondary" onclick="showPanel('withdraw')">Withdraw</button></div></section>
+<h2 class="section-title">Our Services</h2>
+<div class="grid">
+<button class="tile" onclick="showPanel('data')"><div class="emoji">📶</div><strong>Buy Data</strong><span>Choose a data plan</span></button>
+<button class="tile" onclick="showPanel('airtime')"><div class="emoji">📱</div><strong>Buy Airtime</strong><span>Top up your line</span></button>
+<button class="tile" onclick="showPanel('cable')"><div class="emoji">📺</div><strong>Cable TV</strong><span>Pay TV subscription</span></button>
+<button class="tile" onclick="showPanel('electricity')"><div class="emoji">💡</div><strong>Electricity</strong><span>Pay your bill</span></button>
+<button class="tile" onclick="showPanel('education')"><div class="emoji">🎓</div><strong>Education PIN</strong><span>Exam PIN services</span></button>
+<button class="tile" onclick="showPanel('transactions')"><div class="emoji">🧾</div><strong>Transactions</strong><span>View activity</span></button>
+</div>
+<h2 class="section-title">Earn with Saurayi</h2>
+<div class="grid">
+<button class="tile" onclick="showPanel('earn')"><div class="emoji">💰</div><strong>Earn Money</strong><span>Rewards information</span></button>
+<button class="tile" onclick="showPanel('refer')"><div class="emoji">🤝</div><strong>Refer &amp; Earn</strong><span>Invite your friends</span></button>
+</div>
+<section id="panel" class="panel"><h2 id="panelTitle"></h2><p id="panelText"></p><button class="btn secondary" onclick="closePanel()">Close</button></section>
+<div class="notice"><strong>Important:</strong> This is a demo website. Real data purchases, airtime, wallet funding, withdrawals and earning rewards are not active yet. They will require verified VTU API access and secure payment integration. Do not send money through this demo.</div>
+</main>
+<footer>© 2026 SAURAYI DATA &amp; EARN</footer>
+<script>
+const content={
+fund:["Fund Wallet","Wallet funding will be enabled after a secure payment provider is connected and verified."],
+withdraw:["Withdraw","Withdrawals are not active in this demo. A verified payout system must be connected first."],
+data:["Buy Data","Data plans will appear here after the VTU.ng API connection is approved and configured."],
+airtime:["Buy Airtime","Airtime top-up will be enabled after the VTU API integration is complete."],
+cable:["Cable TV","Cable TV subscriptions will be available after VTU integration."],
+electricity:["Electricity","Electricity bill payment will be available after VTU integration."],
+education:["Education PIN","Exam PIN services will be added after the provider API is connected."],
+transactions:["Transactions","Your transaction history will appear here when real services are connected."],
+earn:["Earn Money","Reward features are planned. Any earning rules and payments must be configured and verified before launch."],
+refer:["Refer & Earn","Referral links and rewards will be activated after the earning system is configured."]
+};
+function showPanel(key){document.getElementById("panelTitle").textContent=content[key][0];document.getElementById("panelText").textContent=content[key][1];document.getElementById("panel").classList.add("active");document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"nearest"});}
+function closePanel(){document.getElementById("panel").classList.remove("active");}
+</script>
+</body></html>
