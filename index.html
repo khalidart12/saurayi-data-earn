@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ha">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081526">
+<title>SAURAYI DATA & EARN</title>
+<style>
+:root{--bg:#081526;--panel:#10243b;--gold:#f5bd45;--muted:#a9bbce;--white:#f7fbff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#071321,#102b47);font-family:Arial,sans-serif;color:var(--white);min-height:100vh}
+header{padding:20px 16px 12px;max-width:1050px;margin:auto;display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#ffe08a,#d18a16);display:grid;place-items:center;color:#102033;font-weight:900;font-size:24px}
+.brand{font-weight:800;letter-spacing:.4px}.sub{font-size:12px;color:var(--muted);margin-top:4px}
+main{max-width:1050px;margin:auto;padding:10px 16px 40px}
+.hero{background:linear-gradient(120deg,#173b5d,#10243b);border:1px solid #29445f;border-radius:22px;padding:22px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:bold;letter-spacing:1px}.hero h1{font-size:clamp(25px,5vw,38px);margin:10px 0}.hero p{color:var(--muted);max-width:530px;line-height:1.5;margin:0}
+.wallet{background:#081a2d;border:1px solid #38516b;border-radius:18px;padding:17px;min-width:210px}.wallet small{color:var(--muted)}.amount{font-size:28px;font-weight:800;margin:7px 0 13px}
+button{border:0;border-radius:11px;padding:11px 14px;font-weight:700;cursor:pointer}.primary{background:var(--gold);color:#172437}.secondary{background:#203b56;color:white;border:1px solid #45617d}
+.section-title{margin:28px 0 14px;font-size:19px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid #28435d;border-radius:17px;padding:17px;min-height:120px;cursor:pointer}.tile:hover{border-color:var(--gold)}.ico{font-size:25px}.tile b{display:block;margin-top:13px}.tile small{display:block;color:var(--muted);margin-top:5px}
+.earn{margin-top:20px;padding:20px;border-radius:19px;background:linear-gradient(110deg,#3c2d13,#18334b);border:1px solid #745b2b}.earn h2{margin:0 0 8px}.earn p{color:#d3dbe4;line-height:1.5}
+.notice{font-size:12px;color:#b8c6d4;line-height:1.5;margin-top:22px;border-top:1px solid #294158;padding-top:14px}
+.panel{display:none;background:#10243b;border:1px solid #35516b;border-radius:18px;padding:18px;margin-top:18px}.panel.show{display:block}.panel h2{margin-top:0}
+input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #49627a;background:#081a2d;color:white;margin:7px 0 13px}
+@media(max-width:540px){.hero{padding:18px}.wallet{width:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head>
+<body>
+<header><div class="logo">S</div><div><div class="brand">SAURAYI DATA & EARN</div><div class="sub">Data • Airtime • Wallet • Rewards</div></div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">BARKA DA ZUWA</div><h1>Sayen data cikin sauƙi.</h1><p>Ka sayi data da airtime, ka duba wallet ɗinka, sannan ka gano damar samun lada ta hanyar gayyatar abokai.</p></div>
+<div class="wallet"><small>Wallet balance (Demo)</small><div class="amount">₦0.00</div><button class="primary" onclick="showPanel('wallet')">Fund Wallet</button> <button class="secondary" onclick="showPanel('withdraw')">Withdraw</button></div></section>
+<h2 class="section-title">Ayyuka</h2>
+<div class="grid">
+<div class="tile" onclick="showPanel('data')"><div class="ico">📶</div><b>Buy Data</b><small>Sayi data</small></div>
+<div class="tile" onclick="showPanel('airtime')"><div class="ico">📱</div><b>Buy Airtime</b><small>Sayi kati</small></div>
+<div class="tile" onclick="showPanel('cable')"><div class="ico">📺</div><b>Cable TV</b><small>Biyan kuɗin TV</small></div>
+<div class="tile" onclick="showPanel('electricity')"><div class="ico">💡</div><b>Electricity</b><small>Biyan wuta</small></div>
+<div class="tile" onclick="showPanel('education')"><div class="ico">🎓</div><b>Education PIN</b><small>JAMB da sauransu</small></div>
+<div class="tile" onclick="showPanel('transactions')"><div class="ico">🧾</div><b>Transactions</b><small>Tarihin ciniki</small></div>
+</div>
+<section class="earn"><h2>💰 Earn Money</h2><p>Gayyato abokai su yi rajista. Za a kunna ladan gayyata ne bayan an haɗa tsarin rewards na gaskiya.</p><button class="primary" onclick="showPanel('refer')">Refer & Earn</button></section>
+<div id="panel" class="panel"><h2 id="ptitle">Aiki</h2><p id="pdesc">Wannan sashe yana jiran haɗin API.</p><div id="pform"></div><button class="secondary" onclick="hidePanel()">Rufe</button></div>
+<div class="notice">Muhimmi: Wannan shafin frontend ne na farko. Ba ya karɓar kuɗi, yin real VTU transactions, cire kuɗi ko bayar da rewards tukuna. Ana buƙatar backend mai tsaro, API credentials na VTU.ng da payment integration kafin fara karɓar ciniki. Kada a saka API secret a cikin wannan HTML ko a GitHub.</div>
+</main>
+<script>
+const details={data:['Buy Data','Za a haɗa zaɓin network da data plans bayan an saita VTU API.'],airtime:['Buy Airtime','Za a haɗa MTN, Airtel, Glo da 9mobile bayan an saita VTU API.'],cable:['Cable TV','Za a haɗa DStv, GOtv da Startimes bayan an saita API.'],electricity:['Electricity','Za a haɗa kamfanonin wuta bayan an saita API.'],education:['Education PIN','Za a haɗa PIN na jarabawa bayan an saita API.'],transactions:['Transactions','Tarihin ciniki zai bayyana bayan an haɗa backend.'],wallet:['Fund Wallet','Za a haɗa hanyar biyan kuɗi mai tsaro kafin karɓar kuɗi.'],withdraw:['Withdraw','Za a kunna cire kuɗi bayan an gina wallet da tsarin tantancewa.'],refer:['Refer & Earn','Za a kunna referral rewards bayan an saita tsarin lada.']};
+function showPanel(k){let d=details[k];document.getElementById('ptitle').textContent=d[0];document.getElementById('pdesc').textContent=d[1];document.getElementById('pform').innerHTML='';document.getElementById('panel').classList.add('show');document.getElementById('panel').scrollIntoView({behavior:'smooth'});}
+function hidePanel(){document.getElementById('panel').classList.remove('show')}
+</script></body></html>
