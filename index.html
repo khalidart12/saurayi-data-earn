@@ -199,24 +199,5 @@ function selectedDataPlan(){const network=document.getElementById('dataNetwork')
 function showDataPlanDetails(){const p=selectedDataPlan();const box=document.getElementById('dataPlanDetails');if(!p||!box)return;box.innerHTML=`<b>${p.network} ${p.name}</b><br>Price: <b>₦${retailPrice(p).toLocaleString('en-NG')}</b><br>Validity: ${p.validity}`;}
 function confirmDataOrder(){const p=selectedDataPlan();const phone=document.getElementById('dataPhone')?.value.trim();if(!p){msg('Please select a data plan.');return;}if(!/^0[789][01]\d{8}$/.test(phone||'')){msg('Enter a valid Nigerian phone number (11 digits).');return;}msg('Plan selected. Live purchase is not enabled yet; no money was charged.');}
 renderDataPlans();
-window.addEventListener('DOMContentLoaded',renderDataPlans);
 </script>
-<script>
-// Remove stale offline cache that may keep showing the old placeholder plan list.
-(async()=>{
- try{
-  let changed=false;
-  if('serviceWorker' in navigator){
-   const regs=await navigator.serviceWorker.getRegistrations();
-   for(const reg of regs){await reg.unregister();changed=true;}
-  }
-  if('caches' in window){
-   const keys=await caches.keys();
-   for(const key of keys){await caches.delete(key);changed=true;}
-  }
-  if(changed && !sessionStorage.getItem('sde_cache_cleared_v1')){
-   sessionStorage.setItem('sde_cache_cleared_v1','1'); location.reload();
-  } else {sessionStorage.removeItem('sde_cache_cleared_v1');}
- }catch(e){console.warn('Cache refresh skipped',e);}
-})();
-</script></body></html>
+<script>if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body></html>
